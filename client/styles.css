@@ -1,0 +1,183 @@
+:root {
+  --bg: #0b1220;
+  --card: #141d32;
+  --accent: #2dd4bf;
+  --text: #e5ecff;
+  --muted: #98a2bf;
+  --hit: #ef4444;
+  --miss: #3b82f6;
+  --ship: #22c55e;
+  --invalid: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(160deg, #071022, #0b1220 55%, #10213f);
+  color: var(--text);
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: rgba(20, 29, 50, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.lobby-actions,
+.setup-controls,
+.join-group {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+input,
+button {
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+}
+
+input {
+  background: #0d172b;
+  color: var(--text);
+}
+
+button {
+  background: #13213d;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#message {
+  min-height: 1.5em;
+  color: var(--accent);
+}
+
+#ship-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+#ship-list li {
+  color: var(--muted);
+}
+
+#ship-list li.active {
+  color: var(--text);
+  font-weight: 600;
+}
+
+#ship-list li.placed {
+  color: var(--ship);
+}
+
+.boards-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.board {
+  --cell-size: min(8vw, 34px);
+  display: grid;
+  grid-template-columns: repeat(10, var(--cell-size));
+  grid-template-rows: repeat(10, var(--cell-size));
+  gap: 3px;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border-radius: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #0f1d38;
+}
+
+.cell.ship {
+  background: rgba(34, 197, 94, 0.5);
+}
+
+.cell.hit {
+  background: var(--hit);
+}
+
+.cell.miss {
+  background: var(--miss);
+}
+
+.cell.valid-preview {
+  background: rgba(45, 212, 191, 0.45);
+}
+
+.cell.invalid-preview {
+  background: rgba(245, 158, 11, 0.55);
+}
+
+.cell.enemy {
+  cursor: pointer;
+}
+
+.cell.enemy:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 0.8rem;
+  }
+
+  .board {
+    --cell-size: min(8.2vw, 30px);
+  }
+}
