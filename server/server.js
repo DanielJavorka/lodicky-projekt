@@ -109,14 +109,7 @@ function validatePlacement(ships) {
     }
 
     for (const cell of ship.cells) {
-      if (
-        typeof cell.x !== 'number' ||
-        typeof cell.y !== 'number' ||
-        cell.x < 0 ||
-        cell.y < 0 ||
-        cell.x >= BOARD_SIZE ||
-        cell.y >= BOARD_SIZE
-      ) {
+      if (!isValidCoordinate(cell.x, cell.y)) {
         return { valid: false, message: 'Ship placement out of bounds.' };
       }
       const key = `${cell.x},${cell.y}`;
