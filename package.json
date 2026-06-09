@@ -1,0 +1,20 @@
+{
+  "name": "lodicky-projekt",
+  "version": "1.0.0",
+  "description": "Multiplayer Battleship game using Node.js, Express and Socket.IO",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "battleship",
+    "socket.io",
+    "multiplayer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

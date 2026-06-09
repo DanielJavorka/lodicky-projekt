@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lodíčky Multiplayer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Lodíčky Multiplayer</h1>
+      <p class="subtitle">Create or join a room and battle in real time.</p>
+
+      <section id="lobby" class="card">
+        <h2>Lobby</h2>
+        <div class="lobby-actions">
+          <button id="create-room">Create Room</button>
+          <div class="join-group">
+            <input id="room-code" maxlength="6" placeholder="Room code" />
+            <button id="join-room">Join Room</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="status" class="card">
+        <h2>Status</h2>
+        <p><strong>Room:</strong> <span id="status-room">-</span></p>
+        <p><strong>Players:</strong> <span id="status-players">0/2</span></p>
+        <p><strong>Phase:</strong> <span id="status-phase">lobby</span></p>
+        <p><strong>Turn:</strong> <span id="status-turn">-</span></p>
+        <p id="message"></p>
+      </section>
+
+      <section id="setup" class="card hidden">
+        <h2>Place Ships</h2>
+        <div class="setup-controls">
+          <button id="rotate-ship">Rotate: Horizontal</button>
+          <button id="ready" disabled>Ready</button>
+        </div>
+        <ul id="ship-list"></ul>
+        <div id="placement-board" class="board"></div>
+      </section>
+
+      <section id="battle" class="card hidden">
+        <h2>Battle</h2>
+        <div class="boards-grid">
+          <div>
+            <h3>Your board</h3>
+            <div id="my-board" class="board"></div>
+          </div>
+          <div>
+            <h3>Enemy board</h3>
+            <div id="enemy-board" class="board"></div>
+          </div>
+        </div>
+        <button id="rematch" class="hidden">Request New Game</button>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
