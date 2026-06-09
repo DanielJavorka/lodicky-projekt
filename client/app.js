@@ -196,7 +196,7 @@ function renderEnemyBoard() {
       if (shot === 'miss') {
         cell.classList.add('miss');
       }
-      if (shot || !state.yourTurn || state.gameOver) {
+      if ((shot === 'hit' || shot === 'miss') || !state.yourTurn || state.gameOver) {
         cell.disabled = true;
       }
 

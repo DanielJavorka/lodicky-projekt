@@ -26,6 +26,17 @@ function createEmptyGrid(fill = null) {
   return Array.from({ length: BOARD_SIZE }, () => Array(BOARD_SIZE).fill(fill));
 }
 
+function isValidCoordinate(x, y) {
+  return (
+    typeof x === 'number' &&
+    typeof y === 'number' &&
+    x >= 0 &&
+    y >= 0 &&
+    x < BOARD_SIZE &&
+    y < BOARD_SIZE
+  );
+}
+
 function getOpponentId(room, playerId) {
   return room.players.find((id) => id !== playerId) || null;
 }
@@ -312,7 +323,7 @@ io.on('connection', (socket) => {
       return;
     }
 
-    if (typeof x !== 'number' || typeof y !== 'number' || x < 0 || y < 0 || x >= BOARD_SIZE || y >= BOARD_SIZE) {
+    if (!isValidCoordinate(x, y)) {
       socket.emit('actionError', 'Invalid target cell.');
       return;
     }
